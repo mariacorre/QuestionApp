@@ -1,5 +1,7 @@
 package com.example.questionapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,10 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public class PreviewQuestions extends AppCompatActivity {
+public class PreviewQuestions extends Activity {
 
     private TextView textShowQuestionNum, textShowQuestion, textShowAnswer;
-    private Button btnPrev, btnNext;
+    private Button btnPrev, btnNext, btnBack;
     private List<Question> questionList;
     private int index;
 
@@ -47,12 +49,27 @@ public class PreviewQuestions extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (index >= questionList.size()) {
-                    Toast.makeText(getApplicationContext(), "You are already at the very last Question.", Toast.LENGTH_SHORT).show();
-                } else {
-                    index++;
+                index++;
+                if (index < questionList.size()) {
                     setFields(questionList.get(index));
+                } else {
+                    index = questionList.size() - 1;
+                    Toast.makeText(getApplicationContext(), "You are already at the very last Question.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+                finish();
             }
         });
     }
@@ -63,8 +80,8 @@ public class PreviewQuestions extends AppCompatActivity {
     }
 
     private void setFields(Question q) {
-        textShowQuestionNum.setText(q.getId());
-        textShowQuestion.setText(q.getQuestion());
-        textShowAnswer.setText(q.getAnswer());
+        textShowQuestionNum.setText("Question # " + String.valueOf(q.getId()));
+        textShowQuestion.setText("Question: " + q.getQuestion());
+        textShowAnswer.setText("Answer: " + q.getAnswer());
     }
 }

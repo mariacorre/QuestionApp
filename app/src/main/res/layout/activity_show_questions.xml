@@ -9,11 +9,13 @@
         android:id="@+id/textShowQuestionNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="Question number"
-        android:layout_marginTop="100dp"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textSize="20dp"
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/textShowQuestion"
@@ -23,7 +25,8 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Question"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
         android:inputType="textPersonName" />
 
     <TextView
@@ -31,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textShowQuestion"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
         android:ems="10"
         android:hint="Answer"
         android:inputType="textPersonName" />
@@ -46,6 +50,12 @@
         android:layout_alignParentEnd="true"/>
 
     <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
+    <Button
         android:id="@+id/btnPrev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +63,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/next"/>
+        android:layout_alignTop="@+id/btnNext"/>
 
 
 </RelativeLayout>

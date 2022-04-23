@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         if (q != null) {
                             textQuestion.setText(q.getQuestion());
                             textAnswer.setText(q.getAnswer());
-                            isUpdate = true;
+                            isUpdate = false;
                         } else {
                             Toast.makeText(getApplicationContext(), "Question does not exist.", Toast.LENGTH_SHORT).show();
                         }
